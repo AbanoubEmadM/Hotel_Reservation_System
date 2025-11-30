@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 {{--    @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
+    @stack('styles')
 </head>
 <body class="font-sans antialiased text-gray-900 bg-white">
 @include('partials.navbar')
@@ -24,5 +25,7 @@
         });
     });
 </script>
+@stack('scripts')
+
 </body>
 </html>
