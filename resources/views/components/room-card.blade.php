@@ -37,9 +37,7 @@
         <div class="flex items-start justify-between mb-3">
             <div>
                 <h3 class="text-2xl font-bold text-gray-900 mb-1">
-                    <a href="{{ route('rooms.show', $room->id) }}" class="text-blue-600 hover:text-blue-700">
-                        {{ $room->roomType->name ?? 'Room' }}
-                    </a>
+                    {{ $room->roomType->name ?? 'Room' }}
                 </h3>
                 <p class="text-sm text-gray-500">Room #{{ $room->number }}</p>
             </div>
