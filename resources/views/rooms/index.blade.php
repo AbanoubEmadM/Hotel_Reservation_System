@@ -18,6 +18,5 @@
             <p class="text-gray-500 text-lg">No rooms available at the moment.</p>
         </div>
     @endif
-    {{ $rooms->links() }}
 </div>
 @endsection
