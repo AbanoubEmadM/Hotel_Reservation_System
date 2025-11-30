@@ -78,14 +78,20 @@
 
         <!-- Action Button -->
         <div class="pt-4 border-t border-gray-200">
-            @if($room->status === 'available' || $room->status === 'reserved')
-                <a href="#" class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-semibold py-3 px-4 rounded-lg transition-colors duration-200">
-                    {{ $room->status === 'available' ? 'Book Now' : 'View Details' }}
+            @if($room->status === 'reserved')
+                <a href="{{ route('rooms.show', $room->id) }}" class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-semibold py-3 px-4 rounded-lg transition-colors duration-200">
+                    View Details
                 </a>
-            @else
+            @endif
+            @if($room->status !== 'available' && $room->status !== 'reserved')
                 <button disabled class="block w-full bg-gray-300 text-gray-500 text-center font-semibold py-3 px-4 rounded-lg cursor-not-allowed">
                     Not Available
                 </button>
+            @endif
+            @if($room->status === 'available')
+                <a href="{{ route('rooms.show', $room->id) }}" class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-semibold py-3 px-4 rounded-lg transition-colors duration-200">
+                    Book Now
+                </a>
             @endif
         </div>
     </div>
