@@ -339,6 +339,12 @@ return [
             'url' => 'admin/receptionists',
             'icon' => 'fas fa-fw fa-user-tie',
         ],
+        ['header' => 'Manage Floors'],
+        [
+            'text' => 'Floors',
+            'url' => 'admin/floors',
+            'icon' => 'fas fa-fw fa-solid fa-house',
+        ],
 
         ['header' => 'account_settings'],
         [

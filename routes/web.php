@@ -5,6 +5,8 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ReceptionistController;
+use App\Http\Controllers\FloorController;
+
 Auth::routes();
 
 Route::view('/', 'pages.hotelmaster')->name('home');
@@ -17,6 +19,8 @@ Route::middleware(['auth', 'role:admin|manager'])->group(function () {
     Route::resource('/admin/users', UserController::class)->names('admin.users');
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::resource('/admin/receptionists', ReceptionistController::class)->names('admin.receptionists');
+    Route::resource('/admin/floors', FloorController::class)->names('admin.floors');
+
     Route::put('/admin/receptionists/{id}/activate', [ReceptionistController::class, 'activate'])->name('admin.receptionists.activate');
     Route::put('/admin/receptionists/{id}/deactivate', [ReceptionistController::class, 'deactivate'])->name('admin.receptionists.deactivate');
 });
