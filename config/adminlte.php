@@ -333,6 +333,13 @@ return [
             'url' => 'admin/users',
             'icon' => 'fas fa-fw fa-user',
         ],
+        ['header' => 'Manage Receptionist'],
+        [
+            'text' => 'Receptionists',
+            'url' => 'admin/receptionists',
+            'icon' => 'fas fa-fw fa-user-tie',
+        ],
+
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

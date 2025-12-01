@@ -3,8 +3,8 @@
 @section('content')
     <div class="container mx-auto px-4 py-8">
         <div class="mb-6">
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">Edit User</h1>
-            <p class="text-gray-600">Update user information</p>
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Create User</h1>
+            <p class="text-gray-600">Add a new client user</p>
         </div>
 
         @if(session('success'))
@@ -27,16 +27,15 @@
 
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('admin.users.update', $user->id) }}" method="POST">
+                <form action="{{ route('admin.users.store') }}" method="POST">
                     @csrf
-                    @method('PUT')
 
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
                         <input type="text"
                                name="name"
                                id="name"
-                               value="{{ old('name', $user->name) }}"
+                               value="{{ old('name') }}"
                                class="form-control @error('name') is-invalid @enderror"
                                required>
                         @error('name')
@@ -49,7 +48,7 @@
                         <input type="email"
                                name="email"
                                id="email"
-                               value="{{ old('email', $user->email) }}"
+                               value="{{ old('email') }}"
                                class="form-control @error('email') is-invalid @enderror"
                                required>
                         @error('email')
@@ -63,8 +62,8 @@
                                name="password"
                                id="password"
                                class="form-control @error('password') is-invalid @enderror"
-                               placeholder="Leave blank to keep current password">
-                        <div class="form-text">Minimum 8 characters. Leave blank to keep current password.</div>
+                               required>
+                        <div class="form-text">Minimum 8 characters.</div>
                         @error('password')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -75,7 +74,7 @@
                             Cancel
                         </a>
                         <button type="submit" class="btn btn-primary">
-                            Update User
+                            Create User
                         </button>
                     </div>
                 </form>
@@ -83,4 +82,5 @@
         </div>
     </div>
 @endsection
+
 

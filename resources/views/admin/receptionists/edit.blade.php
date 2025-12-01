@@ -3,8 +3,8 @@
 @section('content')
     <div class="container mx-auto px-4 py-8">
         <div class="mb-6">
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">Edit User</h1>
-            <p class="text-gray-600">Update user information</p>
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Edit Receptionist</h1>
+            <p class="text-gray-600">Update receptionist information</p>
         </div>
 
         @if(session('success'))
@@ -27,7 +27,7 @@
 
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('admin.users.update', $user->id) }}" method="POST">
+                <form action="{{ route('admin.receptionists.update', $receptionist->id) }}" method="POST">
                     @csrf
                     @method('PUT')
 
@@ -36,7 +36,7 @@
                         <input type="text"
                                name="name"
                                id="name"
-                               value="{{ old('name', $user->name) }}"
+                               value="{{ old('name', $receptionist->name) }}"
                                class="form-control @error('name') is-invalid @enderror"
                                required>
                         @error('name')
@@ -49,7 +49,7 @@
                         <input type="email"
                                name="email"
                                id="email"
-                               value="{{ old('email', $user->email) }}"
+                               value="{{ old('email', $receptionist->email) }}"
                                class="form-control @error('email') is-invalid @enderror"
                                required>
                         @error('email')
@@ -71,11 +71,11 @@
                     </div>
 
                     <div class="d-flex justify-content-between">
-                        <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">
+                        <a href="{{ route('admin.receptionists.index') }}" class="btn btn-secondary">
                             Cancel
                         </a>
                         <button type="submit" class="btn btn-primary">
-                            Update User
+                            Update Receptionist
                         </button>
                     </div>
                 </form>
