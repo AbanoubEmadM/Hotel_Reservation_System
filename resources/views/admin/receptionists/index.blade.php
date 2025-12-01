@@ -22,6 +22,9 @@
                     <th>Email</th>
                     <th>Actions</th>
                     <th>Status</th>
+                    @role('admin')
+                    <th>Created By</th>
+                    @endrole
                 </tr>
             </thead>
             <tbody>
@@ -63,6 +66,9 @@
                             @endif
                             </div>
                         </td>
+                        @role('admin')
+                        <td>{{ $receptionist->createdBy->email }}</td>
+                        @endrole
                     </tr>
                 @endforeach
             </tbody>

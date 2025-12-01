@@ -9,8 +9,12 @@ use Illuminate\Support\Facades\Auth;
 class ReceptionistController extends Controller
 {
     public function index() {
-        $receptionists = User::role('receptionist')->get();
-        // dd($receptionists);
+        if (Auth::user()->hasRole('admin')) {
+            $receptionists = User::role('receptionist')->get();
+        } else {
+            $receptionists = User::role('receptionist')->where('created_by', Auth::user()->id)->get();
+        }
+        // dd(Auth::user()->id);
         return view('admin.receptionists.index', compact('receptionists'));
     }
     public function create() {
@@ -27,8 +31,8 @@ class ReceptionistController extends Controller
             'password' => 'required|string|min:8',
         ]);
         $validated['password'] = bcrypt($validated['password']);
+        $validated['created_by'] = Auth::user()->id;
         $receptionist = User::create($validated);
-        $receptionist->created_by = Auth::user()->id;
         $receptionist->assignRole('receptionist');
         return redirect()->route('admin.receptionists.index')->with('success', 'Receptionist created successfully.');
     }
