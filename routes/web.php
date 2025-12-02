@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ReceptionistController;
 use App\Http\Controllers\FloorController;
+use App\Http\Controllers\ReservationController;
 
 Auth::routes();
 
@@ -13,6 +14,7 @@ Route::view('/', 'pages.hotelmaster')->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::resource('/rooms', RoomController::class);
+    Route::get('/reservations/rooms/{id}', [ReservationController::class, 'index'])->name('reserve.index');
 });
 
 Route::middleware(['auth', 'role:admin|manager'])->group(function () {

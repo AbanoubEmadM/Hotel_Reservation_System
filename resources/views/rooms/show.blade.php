@@ -159,7 +159,7 @@
                             </div>
 
                             @if($room->status === 'available')
-                                <a href="#" class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-semibold py-4 px-6 rounded-lg transition-colors duration-200 mb-4 shadow-md hover:shadow-lg">
+                                <a href="{{route('reserve.index', $room->id)}}" class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-semibold py-4 px-6 rounded-lg transition-colors duration-200 mb-4 shadow-md hover:shadow-lg">
                                     Book Now
                                 </a>
                             @elseif($room->status === 'reserved')

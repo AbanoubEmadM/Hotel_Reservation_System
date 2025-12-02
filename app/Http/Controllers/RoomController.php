@@ -12,7 +12,7 @@ class RoomController extends Controller
      */
     public function index()
     {
-        $rooms = Room::paginate(6);
+        $rooms = Room::whereNot('status', 'reserved')->paginate(6);
         return view('rooms.index', compact('rooms'));
     }
 
